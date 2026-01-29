@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -437,18 +438,27 @@
             letter-spacing: 1px;
             z-index: 5;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            opacity: 0.5;
         }
 
         .show-message-btn:hover {
             transform: translateX(-50%) translateY(-3px);
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
             background: linear-gradient(to bottom, #a0522d, #8B4513);
+            opacity: 1;
         }
 
         /* Animación para entrada suave */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .fade-in {
@@ -478,12 +488,14 @@
             gap: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             min-width: 200px;
+            opacity: 0.5;
         }
 
         .money-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
             background: linear-gradient(to bottom, #a0522d, #8B4513);
+            opacity: 1;
         }
 
         .money-icon {
@@ -646,6 +658,41 @@
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
             background: linear-gradient(to bottom, #a0522d, #8B4513);
         }
+
+        /* CONTENEDOR DE VIDEO Y TEXTO para slide 6 */
+        #slide-6 .slide-content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            gap: 30px;
+        }
+
+        #slide-6 .video-section {
+            flex: 1;
+            display: flex;
+            justify-content: left;
+            padding-left:900px;
+            padding-top: 600px;
+            min-height: 50%;
+            position:absolute;
+        }
+
+        #slide-6 .video-container {
+            width: 700px;
+            height: 300px;
+            border: 3px solid #d4af37;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            background: #000;
+        }
+
+        #slide-6 .youtube-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 
@@ -807,7 +854,8 @@
                     <h2 class="dialog-title">Encuentro con el Señor</h2>
                     <p class="dialog-message">"Señor: Sacerdote, recuerde las insulgencias de hoy"</p>
                     <div class="dialog-options">
-                        <button class="dialog-btn option1" onclick="chooseOption('give-indulgences')" id="giveIndulgencesBtn">
+                        <button class="dialog-btn option1" onclick="chooseOption('give-indulgences')"
+                            id="giveIndulgencesBtn">
                             Dar insulgencias
                             <div class="consequence">-10 monedas de oro</div>
                         </button>
@@ -879,12 +927,33 @@
             </div>
         </div>
 
+        <!-- Diapositiva 13 (después de la 2-4) -->
+        <div class="slide" id="slide-11">
+            <div class="image-background"></div>
+            <div class="image-container">
+                <img src="img11.png" alt="Diapositiva 13"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'">
+            </div>
+        </div>
+
         <!-- Diapositiva 6 (después de 2-2) -->
         <div class="slide" id="slide-6">
             <div class="image-background"></div>
             <div class="image-container">
                 <img src="img6.png" alt="Diapositiva 6"
                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'">
+            </div>
+            <!-- Sección de video -->
+            <div class="video-section">
+                <div class="video-container">
+                    <!-- Reemplaza "VIDEO_ID_AQUI" con el ID real de tu video de YouTube -->
+                    <iframe class="youtube-iframe"
+                        src="https://www.youtube.com/embed/CeLitRHa49E?rel=0&modestbranding=1&autoplay=0&fs=1"
+                        title="Video sobre feudalismo"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </div>
 
@@ -920,7 +989,8 @@
                             Luchar
                             <div class="consequence">+5 de respeto</div>
                         </button>
-                        <button class="dialog-btn option2" onclick="chooseOption('escape-kingdom')" id="escapeKingdomBtn">
+                        <button class="dialog-btn option2" onclick="chooseOption('escape-kingdom')"
+                            id="escapeKingdomBtn">
                             Escapar
                             <div class="consequence">-15 monedas de platino</div>
                         </button>
@@ -949,7 +1019,7 @@
             <div class="result-screen">
                 <div class="result-box">
                     <h2 class="result-title">¡FIN DEL CAMINO!</h2>
-                    <p class="result-message">Te han empalado por acusar al sacerdote de herejía.</p>
+                    <p class="result-message">Te han empalado por acusar al señor feudal de herejía.</p>
                     <button class="retry-btn" onclick="retryFromChoice()">Volver a intentar</button>
                 </div>
             </div>
@@ -974,7 +1044,7 @@
                 <div class="result-box">
                     <h2 class="result-title">Te escapaste</h2>
                     <p class="result-message">Has huido del reino, pero perdiste tu honor y riquezas.</p>
-                    <button class="retry-btn" onclick="restartGame()">Volver a intentar</button>
+                    <button class="retry-btn" onclick="restartGame()">Ir al cuestionario</button>
                 </div>
             </div>
         </div>
@@ -986,7 +1056,7 @@
                 <div class="result-box">
                     <h2 class="result-title success-title">¡ENHORABUENA!</h2>
                     <p class="result-message">Has completado el juego defendiendo el reino con honor.</p>
-                    <button class="retry-btn" onclick="restartGame()">Jugar de nuevo</button>
+                    <button class="retry-btn" onclick="restartGame()">Ir al cuestionario</button>
                 </div>
             </div>
         </div>
@@ -1107,10 +1177,10 @@
                 // Verificar si hay algún diálogo visible
                 const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
                     .some(dialog => !dialog.classList.contains('hidden'));
-                
+
                 // Verificar si estamos en una pantalla de resultado
                 const isResultScreen = currentSlideId.includes('result-');
-                
+
                 // Manejo de teclas para economía
                 if (e.key === 'c' || e.key === 'C') {
                     e.preventDefault();
@@ -1155,27 +1225,27 @@
             // Navegación con clic (solo en slides normales sin diálogos visibles)
             document.addEventListener('click', (e) => {
                 if (isTransitioning) return;
-                
+
                 // Verificar si se hizo clic en un botón de mostrar mensaje
                 if (e.target.classList.contains('show-message-btn')) {
                     return;
                 }
-                
+
                 // Verificar si se hizo clic en un botón de diálogo
                 if (e.target.classList.contains('dialog-btn')) {
                     return;
                 }
-                
+
                 // Verificar si hay algún diálogo visible
                 const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
                     .some(dialog => !dialog.classList.contains('hidden'));
-                
+
                 // Verificar si estamos en una pantalla de resultado
                 const isResultScreen = currentSlideId.includes('result-');
-                
+
                 // Verificar si se hizo clic en el panel de economía
                 const isEconomyClick = e.target.closest('.economy-panel');
-                
+
                 if (hasVisibleDialog || isResultScreen || isEconomyClick) {
                     return;
                 }
@@ -1193,11 +1263,11 @@
             // Navegación con touch
             document.addEventListener('touchstart', (e) => {
                 if (isTransitioning) return;
-                
+
                 // Verificar si hay algún diálogo visible
                 const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
                     .some(dialog => !dialog.classList.contains('hidden'));
-                
+
                 if (hasVisibleDialog || currentSlideId.includes('result-')) {
                     e.preventDefault();
                     return;
@@ -1218,11 +1288,11 @@
             // Navegación con scroll
             document.addEventListener('wheel', (e) => {
                 if (isTransitioning) return;
-                
+
                 // Verificar si hay algún diálogo visible
                 const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
                     .some(dialog => !dialog.classList.contains('hidden'));
-                
+
                 if (hasVisibleDialog || currentSlideId.includes('result-')) {
                     e.preventDefault();
                     return;
@@ -1260,13 +1330,14 @@
         function getNextSlide(currentId) {
             const routes = {
                 'slide-1': 'slide-8',
-                'slide-8': 'slide-7',
-                'slide-7': 'slide-2',
+                'slide-8': 'slide-2',
+                'slide-7': 'slide-2-2',
                 'slide-2-2': 'slide-6',
                 'slide-6': 'slide-3',
                 'slide-2-3': 'slide-4',
                 'slide-4': 'slide-5',
-                'slide-2-4': 'slide-9',
+                'slide-2-4': 'slide-11',
+                'slide-11': 'slide-9',
                 'slide-9': 'slide-10'
             };
 
@@ -1310,7 +1381,7 @@
             updateMoneyDisplay();
             // No guardar en localStorage para que siempre empiece en 0
             slideHistory = ['slide-1'];
-            goToSlide('slide-1', false);
+            window.location.href = 'cuestionario.html';
         }
 
         // SISTEMA DE ECONOMÍA - Funciones
@@ -1324,7 +1395,7 @@
 
         function setupEconomyUI() {
             const harvestBtn = document.getElementById('harvestBtn');
-            
+
             // Cosechar monedas
             harvestBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -1369,8 +1440,9 @@
                 'slide-5': 10,
                 'slide-2-4': 11,
                 'slide-6': 12,
-                'slide-9': 13,
-                'slide-10': 14
+                'slide-9': 14,
+                'slide-10': 15,
+                'slide-11': 13
             };
             return slideMap[currentSlideId] || 0;
         }
@@ -1378,11 +1450,11 @@
         function updateMoneyDisplay() {
             // Actualizar conversiones
             convertCurrency();
-            
+
             // Actualizar botón principal
             const totalSilver = playerMoney.silver + (playerMoney.gold * 10) + (playerMoney.platinum * 100);
             document.getElementById('moneyDisplay').textContent = `Saldo: ${totalSilver} monedas de plata`;
-            
+
             // Actualizar panel detallado
             document.getElementById('silverAmount').textContent = `${playerMoney.silver} Plata`;
             document.getElementById('goldAmount').textContent = `${playerMoney.gold} Oro`;
@@ -1395,7 +1467,7 @@
                 playerMoney.silver -= 10;
                 playerMoney.gold += 1;
             }
-            
+
             // Convertir exceso de oro a platino
             while (playerMoney.gold >= 10) {
                 playerMoney.gold -= 10;
@@ -1465,7 +1537,7 @@
         // Modificar función chooseOption para manejar pagos
         function chooseOption(option) {
             hideAllDialogs();
-            
+
             switch (option) {
                 case 'pay-tribute':
                     // Pagar tributo -> ir a 2-2
@@ -1480,7 +1552,7 @@
                             } else {
                                 remaining -= playerMoney.silver;
                                 playerMoney.silver = 0;
-                                
+
                                 if (playerMoney.gold > 0) {
                                     playerMoney.gold -= 1;
                                     playerMoney.silver += 10;
@@ -1493,7 +1565,7 @@
                         updateMoneyDisplay();
                         updateOptionButtons();
                         currentDialogSlide = 'slide-2-1';
-                        goToSlide('slide-2-2');
+                        goToSlide('slide-7');
                     }
                     break;
 
@@ -1516,7 +1588,7 @@
                             } else {
                                 remaining -= playerMoney.gold;
                                 playerMoney.gold = 0;
-                                
+
                                 if (playerMoney.platinum > 0) {
                                     playerMoney.platinum -= 1;
                                     playerMoney.gold += 10;
@@ -1623,4 +1695,5 @@
         }
     </script>
 </body>
+
 </html>
