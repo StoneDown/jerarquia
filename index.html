@@ -61,6 +61,138 @@
             transform: translateX(100%);
         }
 
+        /* Video a pantalla completa */
+        .video-fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9998;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-fullscreen.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .video-fullscreen video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-fullscreen video.loaded {
+            opacity: 1;
+        }
+
+        /* Overlay de carga */
+        .video-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #d4af37;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Ocultar controles nativos para que se vea como parte de la presentación */
+        .video-fullscreen video::-webkit-media-controls-panel {
+            display: none !important;
+        }
+
+        .video-fullscreen video::-webkit-media-controls-play-button {
+            display: none !important;
+        }
+
+        .video-fullscreen video::-webkit-media-controls-start-playback-button {
+            display: none !important;
+        }
+
+        .play-button {
+            background: linear-gradient(to bottom, #d4af37, #8B4513);
+            border: 3px solid #f5e8d0;
+            color: #f5e8d0;
+            padding: 20px 40px;
+            font-size: 1.8rem;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .video-message {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f5e8d0;
+            font-size: 1.5rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 5;
+            font-weight: bold;
+        }
+
         /* Contenedor de imagen para mantener proporciones */
         .image-container {
             max-width: 100%;
@@ -672,10 +804,10 @@
             flex: 1;
             display: flex;
             justify-content: left;
-            padding-left:900px;
+            padding-left: 900px;
             padding-top: 600px;
             min-height: 50%;
-            position:absolute;
+            position: absolute;
         }
 
         #slide-6 .video-container {
@@ -744,6 +876,16 @@
     </button>
 
     <div class="slideshow-container">
+        <!-- Coloca esto justo después de abrir el div .slideshow-container -->
+        <div class="video-fullscreen" id="videoFullscreen">
+            <div class="video-loading" id="videoLoading">
+                <div class="loading-spinner"></div>
+            </div>
+            <video id="fullscreenVideo" onclick="toggleVideoPlayPause()">
+                Tu navegador no soporta videos HTML5.
+            </video>
+        </div>
+
         <!-- Diapositiva 1 -->
         <div class="slide active" id="slide-1">
             <div class="image-background"></div>
@@ -1693,6 +1835,403 @@
                 document.querySelector('.fullscreen-btn').classList.add('fade-out');
             }
         }
+
+        // Mapeo de videos por slide (pon aquí tus URLs de video)
+        const slideVideos = {
+            'slide-1': 'videos/vid1.mp4',        // Video para slide-1 (img1.png)
+            'slide-8': 'videos/vid2.mp4',        // Video para slide-8 (img8.png)
+            'slide-7': 'videos/vid3.mp4',        // Video para slide-7 (img7.png)
+            'slide-2': 'videos/vid4.mp4',        // Video para slide-2 (img2.png)
+            'slide-2-1': 'videos/vid5.mp4',      // Video para slide-2-1 (img2-1.png)
+            'slide-2-2': 'videos/vid6.mp4',      // Video para slide-2-2 (img2-2.png)
+            'slide-3': 'videos/vid7.mp4',        // Video para slide-3 (img3.png)
+            'slide-2-3': 'videos/vid8.mp4',      // Video para slide-2-3 (img2-3.png)
+            'slide-4': 'videos/vid9.mp4',        // Video para slide-4 (img4.png)
+            'slide-5': 'videos/vid10.mp4',       // Video para slide-5 (img5.png)
+            'slide-2-4': 'videos/vid11.mp4',     // Video para slide-2-4 (img2-4.png)
+            'slide-11': 'videos/vid12.mp4',      // Video para slide-11 (img11.png)
+            'slide-6': 'videos/vid13.mp4',       // Video para slide-6 (img6.png)
+            'slide-9': 'videos/vid14.mp4',       // Video para slide-9 (img9.png)
+            'slide-10': 'videos/vid15.mp4'       // Video para slide-10 (img10.png)
+            // Las slides de resultado no tienen video
+        };
+
+        // Modifica la función setupNavigation para manejar mejor los eventos:
+        function setupNavigation() {
+            // Navegación con teclado
+            document.addEventListener('keydown', (e) => {
+                if (isTransitioning) return;
+
+                // Verificar si hay video activo
+                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
+
+                // Si hay video activo
+                if (isVideoActive) {
+                    const video = document.getElementById('fullscreenVideo');
+
+                    switch (e.key) {
+                        case ' ': // Espacio - pausa/reanuda
+                            e.preventDefault();
+                            toggleVideoPlayPause();
+                            return;
+                        case 'Escape': // Escape - cierra video
+                        case 'q': // Q - cierra video
+                        case 'Q':
+                            e.preventDefault();
+                            closeVideo();
+                            return;
+                        case 'ArrowRight': // Flechas - saltar en el video
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            // Permitir navegación dentro del video
+                            return;
+                    }
+                }
+
+                // Si NO hay video activo, manejar teclas normales
+                // Verificar si hay algún diálogo visible
+                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
+                    .some(dialog => !dialog.classList.contains('hidden'));
+
+                // Verificar si estamos en una pantalla de resultado
+                const isResultScreen = currentSlideId.includes('result-');
+
+                // Manejo de tecla Q para activar video (solo si no hay diálogo y no es resultado)
+                if ((e.key === 'q' || e.key === 'Q') && !hasVisibleDialog && !isResultScreen) {
+                    e.preventDefault();
+                    playCurrentSlideVideo();
+                    return;
+                }
+
+                // Manejo de teclas para economía
+                if (e.key === 'c' || e.key === 'C') {
+                    e.preventDefault();
+                    toggleEconomyMenu();
+                    return;
+                }
+
+                // Manejo de teclas para pantalla completa
+                if (e.key === 'f' || e.key === 'F') {
+                    e.preventDefault();
+                    toggleFullscreen();
+                    return;
+                }
+
+                // Solo permitir navegación si no hay diálogo visible y no es pantalla de resultado
+                if (hasVisibleDialog || isResultScreen) {
+                    return;
+                }
+
+                // Navegación entre slides
+                switch (e.key) {
+                    case 'ArrowRight':
+                    case 'PageDown':
+                        e.preventDefault();
+                        navigateNext();
+                        break;
+
+                    case 'ArrowLeft':
+                    case 'PageUp':
+                        e.preventDefault();
+                        navigatePrev();
+                        break;
+
+                    case ' ':
+                    case 'Enter':
+                        e.preventDefault();
+                        if (!isVideoActive) { // Solo navegar si no hay video activo
+                            navigateNext();
+                        }
+                        break;
+
+                    case 'Escape':
+                        // No hacer nada con Escape
+                        break;
+                }
+            });
+
+            // Navegación con clic
+            document.addEventListener('click', (e) => {
+                if (isTransitioning) return;
+
+                // Verificar si hay video activo
+                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
+
+                // Si hay video activo
+                if (isVideoActive) {
+                    // Si se hace clic en el video, pausar/reanudar
+                    if (e.target.tagName === 'VIDEO' || e.target.closest('.video-fullscreen')) {
+                        toggleVideoPlayPause();
+                    }
+                    return;
+                }
+
+                // Verificar si se hizo clic en un botón de mostrar mensaje
+                if (e.target.classList.contains('show-message-btn')) {
+                    return;
+                }
+
+                // Verificar si se hizo clic en un botón de diálogo
+                if (e.target.classList.contains('dialog-btn')) {
+                    return;
+                }
+
+                // Verificar si hay algún diálogo visible
+                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
+                    .some(dialog => !dialog.classList.contains('hidden'));
+
+                // Verificar si estamos en una pantalla de resultado
+                const isResultScreen = currentSlideId.includes('result-');
+
+                // Verificar si se hizo clic en el panel de economía
+                const isEconomyClick = e.target.closest('.economy-panel');
+
+                if (hasVisibleDialog || isResultScreen || isEconomyClick) {
+                    return;
+                }
+
+                const clickX = e.clientX;
+                const windowWidth = window.innerWidth;
+
+                if (clickX > windowWidth / 2) {
+                    navigateNext();
+                } else {
+                    navigatePrev();
+                }
+            });
+
+            // Navegación con touch (se mantiene igual)
+            document.addEventListener('touchstart', (e) => {
+                if (isTransitioning) return;
+
+                // Verificar si hay video activo
+                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
+                if (isVideoActive) return; // No navegar durante video
+
+                // Verificar si hay algún diálogo visible
+                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
+                    .some(dialog => !dialog.classList.contains('hidden'));
+
+                if (hasVisibleDialog || currentSlideId.includes('result-')) {
+                    e.preventDefault();
+                    return;
+                }
+
+                const touchX = e.touches[0].clientX;
+                const windowWidth = window.innerWidth;
+
+                if (touchX > windowWidth / 2) {
+                    navigateNext();
+                } else {
+                    navigatePrev();
+                }
+
+                e.preventDefault();
+            });
+
+            // Navegación con scroll (se mantiene igual)
+            document.addEventListener('wheel', (e) => {
+                if (isTransitioning) return;
+
+                // Verificar si hay video activo
+                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
+                if (isVideoActive) return; // No navegar durante video
+
+                // Verificar si hay algún diálogo visible
+                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
+                    .some(dialog => !dialog.classList.contains('hidden'));
+
+                if (hasVisibleDialog || currentSlideId.includes('result-')) {
+                    e.preventDefault();
+                    return;
+                }
+
+                e.preventDefault();
+
+                if (e.deltaY > 0) {
+                    navigateNext();
+                } else {
+                    navigatePrev();
+                }
+            }, { passive: false });
+        }
+
+        // FUNCIONES DE VIDEO MEJORADAS
+        function playCurrentSlideVideo() {
+            const videoUrl = slideVideos[currentSlideId];
+
+            if (!videoUrl) {
+                console.log('Esta slide no tiene video asignado');
+                return;
+            }
+
+            const videoFullscreen = document.getElementById('videoFullscreen');
+            const fullscreenVideo = document.getElementById('fullscreenVideo');
+
+            // Cambiar la fuente del video
+            fullscreenVideo.src = videoUrl;
+
+            // Mostrar el video a pantalla completa
+            videoFullscreen.classList.add('active');
+
+            // Configurar evento para cuando termine el video
+            fullscreenVideo.onended = function () {
+                closeVideo();
+            };
+
+            // Reproducir automáticamente
+            const playPromise = fullscreenVideo.play();
+
+            if (playPromise !== undefined) {
+                playPromise.catch(e => {
+                    console.log("Autoplay bloqueado, se requiere interacción del usuario:", e);
+                    // Si el autoplay falla, mostrar mensaje táctil
+                    fullscreenVideo.controls = true;
+                });
+            }
+        }
+
+        function closeVideo() {
+            const videoFullscreen = document.getElementById('videoFullscreen');
+            const fullscreenVideo = document.getElementById('fullscreenVideo');
+
+            // Pausar el video
+            fullscreenVideo.pause();
+
+            // Ocultar el video
+            videoFullscreen.classList.remove('active');
+
+            // Limpiar la fuente
+            fullscreenVideo.src = '';
+            fullscreenVideo.onended = null;
+            fullscreenVideo.controls = false;
+        }
+
+        function toggleVideoPlayPause() {
+            const fullscreenVideo = document.getElementById('fullscreenVideo');
+            if (fullscreenVideo.paused) {
+                fullscreenVideo.play();
+            } else {
+                fullscreenVideo.pause();
+            }
+        }
+
+        // Modifica también la función goToSlide:
+        function goToSlide(slideId, addToHistory = true) {
+            if (isTransitioning || !slides[slideId]) return;
+
+            isTransitioning = true;
+            hideAllDialogs();
+            closeVideo(); // Cerrar video si está abierto
+
+            const currentIndex = Object.keys(slides).indexOf(currentSlideId);
+            const targetIndex = Object.keys(slides).indexOf(slideId);
+            const direction = targetIndex > currentIndex ? 'next' : 'prev';
+
+            document.querySelector('.transition-overlay').classList.add('active');
+            slides[currentSlideId].classList.add(direction === 'next' ? 'prev' : 'next');
+
+            setTimeout(() => {
+                slides[currentSlideId].classList.remove('active');
+                currentSlideId = slideId;
+                slides[currentSlideId].classList.add('active');
+
+                Object.values(slides).forEach(slide => {
+                    slide.classList.remove('prev', 'next');
+                });
+
+                if (addToHistory && !slideId.includes('result-')) {
+                    slideHistory.push(slideId);
+                }
+
+                updateCounter();
+                updateOptionButtons();
+
+                setTimeout(() => {
+                    document.querySelector('.transition-overlay').classList.remove('active');
+                    isTransitioning = false;
+                }, 300);
+            }, 400);
+        }
+
+        // FUNCIÓN DE VIDEO MODIFICADA
+        function playCurrentSlideVideo() {
+            const videoUrl = slideVideos[currentSlideId];
+
+            if (!videoUrl) {
+                console.log('Esta slide no tiene video asignado');
+                return;
+            }
+
+            const videoFullscreen = document.getElementById('videoFullscreen');
+            const fullscreenVideo = document.getElementById('fullscreenVideo');
+            const videoLoading = document.getElementById('videoLoading');
+
+            // 1. Pre-cargar el video pero NO mostrarlo aún
+            fullscreenVideo.classList.remove('loaded');
+
+            // 2. Configurar eventos del video
+            let hasStartedShowing = false;
+
+            fullscreenVideo.ontimeupdate = function () {
+                // Cuando el video lleve 1 segundo de carga
+                if (!hasStartedShowing && fullscreenVideo.currentTime >= 1.0) {
+                    hasStartedShowing = true;
+
+                    // Mostrar el video instantáneamente
+                    videoFullscreen.classList.add('active');
+                    videoLoading.classList.add('hidden');
+                    fullscreenVideo.classList.add('loaded');
+
+                    console.log("Video apareció en el segundo:", fullscreenVideo.currentTime);
+                }
+            };
+
+            fullscreenVideo.onerror = function () {
+                console.error("Error al cargar el video:", videoUrl);
+                videoLoading.classList.add('hidden');
+                closeVideo();
+            };
+
+            fullscreenVideo.onended = closeVideo;
+
+            // 3. Empezar a cargar el video pero sin mostrar
+            fullscreenVideo.pause();
+            fullscreenVideo.currentTime = 0;
+            fullscreenVideo.src = videoUrl;
+            fullscreenVideo.preload = "auto";
+
+            // 4. Esperar a que tenga suficiente buffer
+            fullscreenVideo.addEventListener('canplay', function () {
+                // Comenzar a reproducir pero MUTADO para que cargue
+                fullscreenVideo.muted = true;
+                fullscreenVideo.play().then(() => {
+                    console.log("Video cargándose en segundo plano...");
+                }).catch(e => {
+                    console.log("Error al precargar:", e);
+                    // Si falla, mostrar igual
+                    videoFullscreen.classList.add('active');
+                    videoLoading.classList.add('hidden');
+                    fullscreenVideo.classList.add('loaded');
+                    fullscreenVideo.muted = false;
+                    fullscreenVideo.play();
+                });
+            });
+
+            // 5. Backup: Si después de 3 segundos no ha llegado al segundo 1, mostrar igual
+            setTimeout(() => {
+                if (!hasStartedShowing) {
+                    hasStartedShowing = true;
+                    videoFullscreen.classList.add('active');
+                    videoLoading.classList.add('hidden');
+                    fullscreenVideo.classList.add('loaded');
+                    fullscreenVideo.muted = false;
+                    console.log("Forzado a mostrar después de 3 segundos");
+                }
+            }, 500);
+        }
+
+        // CSS necesario (agrega esto):
     </script>
 </body>
 
