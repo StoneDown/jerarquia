@@ -2211,7 +2211,7 @@
                 setTimeout(() => {
                     document.querySelector('.transition-overlay').classList.remove('active');
                     isTransitioning = false;
-                }, 400);
+                }, 300);
             }, 400);
         }
 
@@ -2302,8 +2302,75 @@
             // videoElement.currentTime = 0;
             // videoElement.play();
         }
+
+        // Al inicio del script, agrega esta función:
+        function preloadAllVideos() {
+            // Lista de videos a precargar
+            const videosToPreload = [
+                'videos/empalamiento.mp4',
+                'videos/destierro.mp4',
+                'videos/vid1.mp4',
+                'videos/vid2.mp4',
+                'videos/vid3.mp4',
+                'videos/vid4.mp4',
+                'videos/vid5.mp4',
+                'videos/vid6.mp4',
+                'videos/vid7.mp4',
+                'videos/vid8.mp4',
+                'videos/vid9.mp4',
+                'videos/vid10.mp4',
+                'videos/vid11.mp4',
+                'videos/vid12.mp4',
+                'videos/vid13.mp4',
+                'videos/vid14.mp4',
+                'videos/vid15.mp4'
+            ];
+
+            console.log("Iniciando precarga de videos...");
+
+            videosToPreload.forEach((videoUrl, index) => {
+                const video = document.createElement('video');
+                video.preload = 'auto';
+                video.style.display = 'none';
+
+                const source = document.createElement('source');
+                source.src = videoUrl;
+                source.type = 'video/mp4';
+
+                video.appendChild(source);
+                document.body.appendChild(video);
+
+                // Opcional: Mostrar progreso de carga
+                video.addEventListener('loadeddata', () => {
+                    console.log(`Video precargado: ${videoUrl}`);
+                });
+
+                video.addEventListener('error', (e) => {
+                    console.warn(`Error al precargar video: ${videoUrl}`, e);
+                });
+            });
+
+            console.log("Todos los videos están siendo precargados en segundo plano");
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inicializar todas las slides
+            initSlides();
+
+            // Inicializar sistema de economía
+            initEconomy();
+
+            // PRECARGAR TODOS LOS VIDEOS
+            preloadAllVideos();
+
+            // Intentar pantalla completa automáticamente
+            setTimeout(() => {
+                requestFullscreen();
+            }, 100);
+
+            // ... resto de tu código ...
+        });
     </script>
 </body>
 
 </html>
-
