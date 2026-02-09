@@ -129,7 +129,7 @@
             }
         }
 
-        /* Ocultar controles nativos para que se vea como parte de la presentación */
+        /* Ocultar controles nativos */
         .video-fullscreen video::-webkit-media-controls-panel {
             display: none !important;
         }
@@ -193,7 +193,7 @@
             font-weight: bold;
         }
 
-        /* Contenedor de imagen para mantener proporciones */
+        /* Contenedor de imagen */
         .image-container {
             max-width: 100%;
             max-height: 100%;
@@ -202,7 +202,7 @@
             align-items: center;
         }
 
-        /* Imágenes que se ajustan al contenedor */
+        /* Imágenes */
         .slide img {
             max-width: 100%;
             max-height: 100%;
@@ -211,7 +211,7 @@
             object-fit: contain;
         }
 
-        /* Fondo alrededor de imágenes con relación de aspecto diferente */
+        /* Fondo alrededor de imágenes */
         .image-background {
             position: absolute;
             top: 0;
@@ -222,7 +222,7 @@
             z-index: -1;
         }
 
-        /* Indicador de número de slide (mínimo) */
+        /* Indicador de slide */
         .slide-counter {
             position: fixed;
             bottom: 20px;
@@ -254,51 +254,7 @@
             opacity: 1;
         }
 
-        /* Instrucciones mínimas (se desvanecen) */
-        .instructions {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.8);
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-align: center;
-            opacity: 1;
-            transition: opacity 2s ease 3s;
-        }
-
-        .instructions.fade-out {
-            opacity: 0;
-        }
-
-        /* Botón para forzar pantalla completa */
-        .fullscreen-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            color: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 8px 15px;
-            border-radius: 5px;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            cursor: pointer;
-            z-index: 1001;
-            opacity: 1;
-            transition: opacity 2s ease 3s;
-        }
-
-        .fullscreen-btn.fade-out {
-            opacity: 0;
-        }
-
-        /* Estilos para pantallas de diálogo */
+        /* Pantallas de diálogo */
         .dialog-overlay {
             position: absolute;
             top: 0;
@@ -410,16 +366,6 @@
         .dialog-btn.option2 {
             background: linear-gradient(to bottom, #8b1a1a, #5a1010);
             border-color: #ff4444;
-        }
-
-        .dialog-btn.disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .dialog-btn.disabled:hover {
-            transform: none;
-            box-shadow: none;
         }
 
         .consequence {
@@ -551,7 +497,7 @@
             color: #e6d5b8;
         }
 
-        /* Botón flotante para mostrar mensaje/instrucciones */
+        /* Botón flotante para mostrar mensaje */
         .show-message-btn {
             position: absolute;
             bottom: 100px;
@@ -595,200 +541,6 @@
 
         .fade-in {
             animation: fadeIn 0.5s ease-out forwards;
-        }
-
-        /* SISTEMA DE ECONOMÍA */
-        .economy-panel {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1002;
-        }
-
-        .money-btn {
-            background: linear-gradient(to bottom, #8B4513, #654321);
-            border: 2px solid #d4af37;
-            color: #f5e8d0;
-            padding: 12px 25px;
-            font-size: 1.1rem;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            min-width: 200px;
-            opacity: 0.5;
-        }
-
-        .money-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
-            background: linear-gradient(to bottom, #a0522d, #8B4513);
-            opacity: 1;
-        }
-
-        .money-icon {
-            font-size: 1.3rem;
-        }
-
-        .economy-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            margin-top: 10px;
-            background: linear-gradient(135deg, #2c1810, #1a1008);
-            border: 2px solid #8B4513;
-            border-radius: 10px;
-            padding: 20px;
-            min-width: 250px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            display: none;
-            z-index: 1003;
-        }
-
-        .economy-menu.active {
-            display: block;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .harvest-btn {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(to bottom, #2d5a27, #1e3a1a);
-            border: 3px solid #4CAF50;
-            color: #f5e8d0;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .harvest-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
-        }
-
-        .harvest-btn:active {
-            transform: scale(0.95);
-        }
-
-        .money-display {
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 15px;
-            text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .money-display h4 {
-            color: #d4af37;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-        }
-
-        .money-amount {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #f5e8d0;
-        }
-
-        .money-silver {
-            color: #c0c0c0;
-        }
-
-        .money-gold {
-            color: #ffd700;
-        }
-
-        .money-platinum {
-            color: #e5e4e2;
-        }
-
-        .conversion-rate {
-            font-size: 0.9rem;
-            color: #c19a6b;
-            margin-top: 5px;
-            font-style: italic;
-        }
-
-        /* Notificación de cosecha */
-        .harvest-notification {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(45, 90, 39, 0.9);
-            border: 2px solid #4CAF50;
-            border-radius: 10px;
-            padding: 20px 30px;
-            color: #f5e8d0;
-            font-size: 1.5rem;
-            font-weight: bold;
-            z-index: 2000;
-            display: none;
-            animation: fadeIn 0.3s ease-out;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-        }
-
-        .harvest-notification.active {
-            display: block;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        /* Mensaje de falta de fondos */
-        .insufficient-funds {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(139, 26, 26, 0.9);
-            border: 2px solid #ff4444;
-            border-radius: 10px;
-            padding: 30px 40px;
-            color: #f5e8d0;
-            font-size: 1.8rem;
-            font-weight: bold;
-            z-index: 2000;
-            display: none;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            max-width: 500px;
-            width: 90%;
-        }
-
-        .insufficient-funds.active {
-            display: block;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        .continue-btn {
-            background: linear-gradient(to bottom, #8B4513, #654321);
-            border: 2px solid #d4af37;
-            color: #f5e8d0;
-            padding: 15px 30px;
-            font-size: 1.3rem;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        .continue-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-            background: linear-gradient(to bottom, #a0522d, #8B4513);
         }
 
         /* CONTENEDOR DE VIDEO Y TEXTO para slide 6 */
@@ -845,7 +597,6 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.7);
-            /* Overlay oscuro para mejor legibilidad */
             z-index: 2;
             display: flex;
             justify-content: center;
@@ -877,52 +628,8 @@
 <body>
     <div class="transition-overlay"></div>
 
-    <!-- Panel de economía -->
-    <div class="economy-panel">
-        <button class="money-btn" id="moneyBtn">
-            <span class="money-icon">💰</span>
-            <span id="moneyDisplay">Saldo: 0 monedas de plata</span>
-        </button>
-        <div class="economy-menu" id="economyMenu">
-            <button class="harvest-btn" id="harvestBtn">
-                🌾<br>Cosechar
-            </button>
-            <div class="money-display">
-                <h4>Tus Riquezas</h4>
-                <div class="money-amount">
-                    <span class="money-silver" id="silverAmount">0</span> Plata<br>
-                    <span class="money-gold" id="goldAmount">0</span> Oro<br>
-                    <span class="money-platinum" id="platinumAmount">0</span> Platino
-                </div>
-                <div class="conversion-rate">
-                    10 Plata = 1 Oro<br>
-                    10 Oro = 1 Platino
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Notificación de cosecha -->
-    <div class="harvest-notification" id="harvestNotification">
-        +1 Moneda de Plata
-    </div>
-
-    <!-- Mensaje de falta de fondos -->
-    <div class="insufficient-funds hidden" id="insufficientFunds">
-        <div id="insufficientMessage">No tienes suficientes monedas</div>
-        <button class="continue-btn" onclick="hideInsufficientFunds()">Continuar</button>
-    </div>
-
-    <div class="instructions">
-        Usa las flechas ← →, clic o scroll para cambiar de diapositiva | C: Economía | F: Pantalla Completa
-    </div>
-
-    <button class="fullscreen-btn" onclick="toggleFullscreen()">
-        Pantalla Completa (F)
-    </button>
-
     <div class="slideshow-container">
-        <!-- Coloca esto justo después de abrir el div .slideshow-container -->
+        <!-- Video a pantalla completa -->
         <div class="video-fullscreen" id="videoFullscreen">
             <div class="video-loading" id="videoLoading">
                 <div class="loading-spinner"></div>
@@ -966,20 +673,6 @@
                 <img src="img2.png" alt="Introducción al juego"
                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579783483455-d1c40f8e7b7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'">
             </div>
-
-            <!-- Botón para mostrar mensaje -->
-            <button class="show-message-btn" onclick="showDialog('intro-overlay')">
-                Ver Instrucciones
-            </button>
-
-            <!-- Pantalla de introducción - OCULTA inicialmente -->
-            <div class="intro-overlay hidden" id="intro-overlay">
-                <div class="intro-box fade-in">
-                    <h2 class="intro-title">Ascenso hasta el Rey</h2>
-                    <p class="intro-message">Un viaje de decisiones que determinarán tu destino en el reino feudal</p>
-                    <button class="start-btn" onclick="startJourney()">Comenzar Travesía</button>
-                </div>
-            </div>
         </div>
 
         <!-- Diapositiva 2-1 (primer encuentro) -->
@@ -988,29 +681,6 @@
             <div class="image-container">
                 <img src="img2-1.png" alt="Encuentro con caballero"
                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1579783483455-d1c40f8e7b7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'">
-            </div>
-
-            <!-- Botón para mostrar diálogo -->
-            <button class="show-message-btn" onclick="showDialog('dialog-2-1')">
-                Ver Instrucciones
-            </button>
-
-            <!-- Diálogo para opciones - OCULTO inicialmente -->
-            <div class="dialog-overlay hidden" id="dialog-2-1">
-                <div class="dialog-box fade-in">
-                    <h2 class="dialog-title">Encuentro con Caballero</h2>
-                    <p class="dialog-message">"Caballero: Ey tú, recuerda el tributo"</p>
-                    <div class="dialog-options">
-                        <button class="dialog-btn option1" onclick="chooseOption('pay-tribute')" id="payTributeBtn">
-                            Pagar tributo
-                            <div class="consequence">-2 monedas de plata</div>
-                        </button>
-                        <button class="dialog-btn option2" onclick="chooseOption('escape-tribute')">
-                            Escapar
-                            <div class="consequence">-10 de respeto</div>
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1029,30 +699,6 @@
             <div class="image-container">
                 <img src="img3.png" alt="Encuentro con sacerdote"
                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1547235001-d703406d3f17?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'">
-            </div>
-
-            <!-- Botón para mostrar diálogo -->
-            <button class="show-message-btn" onclick="showDialog('dialog-3')">
-                Ver Instrucciones
-            </button>
-
-            <!-- Diálogo para opciones del sacerdote - OCULTO inicialmente -->
-            <div class="dialog-overlay hidden" id="dialog-3">
-                <div class="dialog-box fade-in">
-                    <h2 class="dialog-title">Encuentro con el Señor</h2>
-                    <p class="dialog-message">"Señor: Sacerdote, recuerde las insulgencias de hoy"</p>
-                    <div class="dialog-options">
-                        <button class="dialog-btn option1" onclick="chooseOption('give-indulgences')"
-                            id="giveIndulgencesBtn">
-                            Dar insulgencias
-                            <div class="consequence">-10 monedas de oro</div>
-                        </button>
-                        <button class="dialog-btn option2" onclick="chooseOption('accuse-heresy')">
-                            Acusarlo de herejía
-                            <div class="consequence">-8 de respeto</div>
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -1081,29 +727,6 @@
                 <img src="img5.png" alt="Encuentro con el rey"
                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'">
             </div>
-
-            <!-- Botón para mostrar diálogo -->
-            <button class="show-message-btn" onclick="showDialog('dialog-5')">
-                Ver Instrucciones
-            </button>
-
-            <!-- Diálogo para opciones del rey - OCULTO inicialmente -->
-            <div class="dialog-overlay hidden" id="dialog-5">
-                <div class="dialog-box fade-in">
-                    <h2 class="dialog-title">Acusación Real</h2>
-                    <p class="dialog-message">"El rey te ha acusado de herejía"</p>
-                    <div class="dialog-options">
-                        <button class="dialog-btn option1" onclick="chooseOption('kill-king')">
-                            Asesinar al rey
-                            <div class="consequence">+1 ascenso</div>
-                        </button>
-                        <button class="dialog-btn option2" onclick="chooseOption('flee-king')">
-                            Huir
-                            <div class="consequence">-10 de respeto</div>
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Diapositiva 2-4 (después de asesinar al rey) -->
@@ -1131,18 +754,6 @@
                 <img src="img6.png" alt="Diapositiva 6"
                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'">
             </div>
-            <!-- Sección de video -->
-            <div class="video-section">
-                <div class="video-container">
-                    <!-- Reemplaza "VIDEO_ID_AQUI" con el ID real de tu video de YouTube -->
-                    <iframe class="youtube-iframe"
-                        src="https://www.youtube.com/embed/CeLitRHa49E?rel=0&modestbranding=1&autoplay=0&fs=1"
-                        title="Video sobre feudalismo"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
         </div>
 
         <!-- Diapositiva 9 -->
@@ -1161,107 +772,6 @@
                 <img src="img10.png" alt="Diapositiva 10"
                     onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'">
             </div>
-
-            <!-- Botón para mostrar diálogo -->
-            <button class="show-message-btn" onclick="showDialog('dialog-10')">
-                Ver Instrucciones
-            </button>
-
-            <!-- Diálogo final - OCULTO inicialmente -->
-            <div class="dialog-overlay hidden" id="dialog-10">
-                <div class="dialog-box fade-in">
-                    <h2 class="dialog-title">Ataque al Reino</h2>
-                    <p class="dialog-message">"¡Están atacando el reino!"</p>
-                    <div class="dialog-options">
-                        <button class="dialog-btn option1" onclick="chooseOption('fight-kingdom')">
-                            Luchar
-                            <div class="consequence">+5 de respeto</div>
-                        </button>
-                        <button class="dialog-btn option2" onclick="chooseOption('escape-kingdom')"
-                            id="escapeKingdomBtn">
-                            Escapar
-                            <div class="consequence">-15 monedas de platino</div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pantallas de resultado -->
-
-        <!-- Resultado: Cabeza cortada -->
-        <div class="slide" id="result-beheaded">
-            <!-- Video de fondo en lugar de image-background -->
-            <video class="result-video-bg" autoplay muted loop onended="showResultMessage(this)">
-                <source src="videos/empalamiento.mp4" type="video/mp4">
-                Tu navegador no soporta videos HTML5.
-            </video>
-
-            <div class="result-screen">
-                <div class="result-box">
-                    <h2 class="result-title">¡FIN DEL CAMINO!</h2>
-                    <p class="result-message">Te cortaron la cabeza por no pagar el tributo al caballero.</p>
-                    <button class="retry-btn" onclick="retryFromChoice()">Volver a intentar</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Resultado: Empalado -->
-        <div class="slide" id="result-impaled">
-            <!-- Video de fondo en lugar de image-background -->
-            <video class="result-video-bg" autoplay muted loop onended="showResultMessage(this)">
-                <source src="videos/empalamiento.mp4" type="video/mp4">
-                Tu navegador no soporta videos HTML5.
-            </video>
-
-            <div class="result-screen">
-                <div class="result-box">
-                    <h2 class="result-title">¡FIN DEL CAMINO!</h2>
-                    <p class="result-message">Te han empalado por acusar al señor feudal de herejía.</p>
-                    <button class="retry-btn" onclick="retryFromChoice()">Volver a intentar</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Resultado: Desterrado -->
-        <div class="slide" id="result-exiled">
-            <!-- Video de fondo -->
-            <video class="result-video-bg" id="exiled-video" autoplay muted loop playsinline>
-                <source src="videos/destierro.mp4" type="video/mp4">
-                Tu navegador no soporta videos HTML5.
-            </video>
-
-            <div class="result-screen">
-                <div class="result-box">
-                    <h2 class="result-title">¡FIN DEL CAMINO!</h2>
-                    <p class="result-message">Te han desterrado por huir del rey.</p>
-                    <button class="retry-btn" onclick="retryFromChoice()">Volver a intentar</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Resultado: Escapó del reino -->
-        <div class="slide" id="result-escaped">
-            <div class="image-background"></div>
-            <div class="result-screen">
-                <div class="result-box">
-                    <h2 class="result-title">Te escapaste</h2>
-                    <p class="result-message">Has huido del reino, pero perdiste tu honor y riquezas.</p>
-                    <button class="retry-btn" onclick="restartGame()">Ir al cuestionario</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Resultado: Victoria completa -->
-        <div class="slide" id="result-victory">
-            <div class="image-background"></div>
-            <div class="result-screen">
-                <div class="result-box">
-                    <h2 class="result-title success-title">¡ENHORABUENA!</h2>
-                    <p class="result-message">Has completado el juego defendiendo el reino con honor.</p>
-                    <button class="retry-btn" onclick="restartGame()">Ir al cuestionario</button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1275,11 +785,23 @@
         let slideHistory = ['slide-1'];
         let currentDialogSlide = null;
 
-        // SISTEMA DE ECONOMÍA
-        let playerMoney = {
-            silver: 0,      // Monedas de plata
-            gold: 0,        // Monedas de oro
-            platinum: 0     // Monedas de platino
+        // Mapeo de videos por slide
+        const slideVideos = {
+            'slide-1': 'videos/vid1.mp4',
+            'slide-8': 'videos/vid2.mp4',
+            'slide-7': 'videos/vid3.mp4',
+            'slide-2': 'videos/vid4.mp4',
+            'slide-2-1': 'videos/vid5.mp4',
+            'slide-2-2': 'videos/vid6.mp4',
+            'slide-3': 'videos/vid7.mp4',
+            'slide-2-3': 'videos/vid8.mp4',
+            'slide-4': 'videos/vid9.mp4',
+            'slide-5': 'videos/vid10.mp4',
+            'slide-2-4': 'videos/vid11.mp4',
+            'slide-11': 'videos/vid12.mp4',
+            'slide-6': 'videos/vid13.mp4',
+            'slide-9': 'videos/vid14.mp4',
+            'slide-10': 'videos/vid15.mp4'
         };
 
         // Inicializar presentación
@@ -1287,19 +809,8 @@
             // Inicializar todas las slides
             initSlides();
 
-            // Inicializar sistema de economía (SIEMPRE comienza en 0)
-            initEconomy();
-
-            // Intentar pantalla completa automáticamente
-            setTimeout(() => {
-                requestFullscreen();
-            }, 100);
-
-            // Desvanecer instrucciones
-            setTimeout(() => {
-                document.querySelector('.instructions').classList.add('fade-out');
-                document.querySelector('.fullscreen-btn').classList.add('fade-out');
-            }, 3000);
+            // Precargar videos
+            preloadAllVideos();
 
             // Configurar navegación
             setupNavigation();
@@ -1307,8 +818,10 @@
             // Actualizar contador
             updateCounter();
 
-            // Configurar evento para pantalla completa
-            setupFullscreenListeners();
+            // Solicitar pantalla completa automáticamente
+            setTimeout(() => {
+                requestFullscreen();
+            }, 100);
         });
 
         // Inicializar todas las slides
@@ -1329,7 +842,7 @@
 
         function updateCounter() {
             const slideCounter = document.getElementById('slideCounter');
-            const totalVisible = Object.keys(slides).length - 5;
+            const totalVisible = Object.keys(slides).length - 5; // Excluyendo resultados
             const currentNumber = slideHistory.length;
             slideCounter.textContent = `${currentNumber} / ${totalVisible}`;
         }
@@ -1340,6 +853,7 @@
 
             isTransitioning = true;
             hideAllDialogs();
+            closeVideo(); // Cerrar video si está abierto
 
             const currentIndex = Object.keys(slides).indexOf(currentSlideId);
             const targetIndex = Object.keys(slides).indexOf(slideId);
@@ -1362,7 +876,6 @@
                 }
 
                 updateCounter();
-                updateOptionButtons(); // Actualizar botones cuando cambia la slide
 
                 setTimeout(() => {
                     document.querySelector('.transition-overlay').classList.remove('active');
@@ -1377,38 +890,49 @@
             document.addEventListener('keydown', (e) => {
                 if (isTransitioning) return;
 
-                // Verificar si hay algún diálogo visible
-                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
-                    .some(dialog => !dialog.classList.contains('hidden'));
+                // Verificar si hay video activo
+                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
 
-                // Verificar si estamos en una pantalla de resultado
-                const isResultScreen = currentSlideId.includes('result-');
+                // Si hay video activo
+                if (isVideoActive) {
+                    const video = document.getElementById('fullscreenVideo');
 
-                // Manejo de teclas para economía
-                if (e.key === 'c' || e.key === 'C') {
-                    e.preventDefault();
-                    toggleEconomyMenu();
-                    return;
+                    switch (e.key) {
+                        case ' ': // Espacio - pausa/reanuda
+                            e.preventDefault();
+                            toggleVideoPlayPause();
+                            return;
+                        case 'Escape': // Escape - cierra video
+                        case 'q': // Q - cierra video
+                        case 'Q':
+                            e.preventDefault();
+                            closeVideo();
+                            return;
+                    }
                 }
 
-                // Manejo de teclas para pantalla completa
-                if (e.key === 'f' || e.key === 'F') {
-                    e.preventDefault();
-                    toggleFullscreen();
-                    return;
-                }
+                // Tecla Q para activar video (solo si no hay diálogo y no es resultado)
+                if ((e.key === 'q' || e.key === 'Q')) {
+                    // Verificar si hay algún diálogo visible
+                    const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
+                        .some(dialog => !dialog.classList.contains('hidden'));
 
-                // Solo permitir navegación si no hay diálogo visible y no es pantalla de resultado
-                if (hasVisibleDialog || isResultScreen) {
-                    return;
+                    // Verificar si estamos en una pantalla de resultado
+                    const isResultScreen = currentSlideId.includes('result-');
+
+                    if (!hasVisibleDialog && !isResultScreen) {
+                        e.preventDefault();
+                        playCurrentSlideVideo();
+                        return;
+                    }
                 }
 
                 // Navegación entre slides
                 switch (e.key) {
                     case 'ArrowRight':
+                    case 'PageDown':
                     case ' ':
                     case 'Enter':
-                    case 'PageDown':
                         e.preventDefault();
                         navigateNext();
                         break;
@@ -1418,16 +942,24 @@
                         e.preventDefault();
                         navigatePrev();
                         break;
-
-                    case 'Escape':
-                        // No hacer nada con Escape
-                        break;
                 }
             });
 
-            // Navegación con clic (solo en slides normales sin diálogos visibles)
+            // Navegación con clic
             document.addEventListener('click', (e) => {
                 if (isTransitioning) return;
+
+                // Verificar si hay video activo
+                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
+
+                // Si hay video activo
+                if (isVideoActive) {
+                    // Si se hace clic en el video, pausar/reanudar
+                    if (e.target.tagName === 'VIDEO' || e.target.closest('.video-fullscreen')) {
+                        toggleVideoPlayPause();
+                    }
+                    return;
+                }
 
                 // Verificar si se hizo clic en un botón de mostrar mensaje
                 if (e.target.classList.contains('show-message-btn')) {
@@ -1436,20 +968,6 @@
 
                 // Verificar si se hizo clic en un botón de diálogo
                 if (e.target.classList.contains('dialog-btn')) {
-                    return;
-                }
-
-                // Verificar si hay algún diálogo visible
-                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
-                    .some(dialog => !dialog.classList.contains('hidden'));
-
-                // Verificar si estamos en una pantalla de resultado
-                const isResultScreen = currentSlideId.includes('result-');
-
-                // Verificar si se hizo clic en el panel de economía
-                const isEconomyClick = e.target.closest('.economy-panel');
-
-                if (hasVisibleDialog || isResultScreen || isEconomyClick) {
                     return;
                 }
 
@@ -1467,11 +985,13 @@
             document.addEventListener('touchstart', (e) => {
                 if (isTransitioning) return;
 
-                // Verificar si hay algún diálogo visible
-                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
-                    .some(dialog => !dialog.classList.contains('hidden'));
+                // Verificar si hay video activo
+                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
+                if (isVideoActive) return;
 
-                if (hasVisibleDialog || currentSlideId.includes('result-')) {
+                // Verificar si estamos en una pantalla de resultado
+                const isResultScreen = currentSlideId.includes('result-');
+                if (isResultScreen) {
                     e.preventDefault();
                     return;
                 }
@@ -1492,11 +1012,13 @@
             document.addEventListener('wheel', (e) => {
                 if (isTransitioning) return;
 
-                // Verificar si hay algún diálogo visible
-                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
-                    .some(dialog => !dialog.classList.contains('hidden'));
+                // Verificar si hay video activo
+                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
+                if (isVideoActive) return;
 
-                if (hasVisibleDialog || currentSlideId.includes('result-')) {
+                // Verificar si estamos en una pantalla de resultado
+                const isResultScreen = currentSlideId.includes('result-');
+                if (isResultScreen) {
                     e.preventDefault();
                     return;
                 }
@@ -1532,15 +1054,14 @@
         // Definir rutas de la presentación
         function getNextSlide(currentId) {
             const routes = {
-                'slide-1': 'slide-8',
-                'slide-8': 'slide-2',
-                'slide-7': 'slide-2-2',
-                'slide-2-2': 'slide-6',
-                'slide-6': 'slide-3',
-                'slide-2-3': 'slide-4',
+                'slide-1': 'slide-2',
+                'slide-2': 'slide-3',
+                'slide-3': 'slide-4',
                 'slide-4': 'slide-5',
-                'slide-2-4': 'slide-11',
-                'slide-11': 'slide-9',
+                'slide-5': 'slide-6',
+                'slide-6': 'slide-7',
+                'slide-7': 'slide-8',
+                'slide-8': 'slide-9',
                 'slide-9': 'slide-10'
             };
 
@@ -1579,268 +1100,193 @@
 
         function restartGame() {
             hideAllDialogs();
-            // Reiniciar dinero a 0
-            playerMoney = { silver: 0, gold: 0, platinum: 0 };
-            updateMoneyDisplay();
-            // No guardar en localStorage para que siempre empiece en 0
             slideHistory = ['slide-1'];
             window.location.href = 'cuestionario.html';
         }
 
-        // SISTEMA DE ECONOMÍA - Funciones
-        function initEconomy() {
-            // SIEMPRE comenzar con 0 (no cargar de localStorage)
-            playerMoney = { silver: 0, gold: 0, platinum: 0 };
-            updateMoneyDisplay();
-            setupEconomyUI();
-            updateOptionButtons();
-        }
-
-        function setupEconomyUI() {
-            const harvestBtn = document.getElementById('harvestBtn');
-
-            // Cosechar monedas
-            harvestBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                harvestCoins();
-            });
-
-            // Ocultar menú al hacer click fuera
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.economy-panel')) {
-                    document.getElementById('economyMenu').classList.remove('active');
-                }
-            });
-        }
-
-        function toggleEconomyMenu() {
-            const economyMenu = document.getElementById('economyMenu');
-            economyMenu.classList.toggle('active');
-        }
-
-        function harvestCoins() {
-            // Solo cosechar en slides 1-5
-            const currentSlideNum = getCurrentSlideNumber();
-            if (currentSlideNum >= 1 && currentSlideNum <= 14) {
-                playerMoney.silver += 1;
-                updateMoneyDisplay();
-                showHarvestNotification();
-                updateOptionButtons();
-            }
-        }
-
-        function getCurrentSlideNumber() {
-            const slideMap = {
-                'slide-1': 1,
-                'slide-8': 2,
-                'slide-7': 3,
-                'slide-2': 4,
-                'slide-2-1': 5,
-                'slide-2-2': 6,
-                'slide-3': 7,
-                'slide-2-3': 8,
-                'slide-4': 9,
-                'slide-5': 10,
-                'slide-2-4': 11,
-                'slide-6': 12,
-                'slide-9': 14,
-                'slide-10': 15,
-                'slide-11': 13
-            };
-            return slideMap[currentSlideId] || 0;
-        }
-
-        function updateMoneyDisplay() {
-            // Actualizar conversiones
-            convertCurrency();
-
-            // Actualizar botón principal
-            const totalSilver = playerMoney.silver + (playerMoney.gold * 10) + (playerMoney.platinum * 100);
-            document.getElementById('moneyDisplay').textContent = `Saldo: ${totalSilver} monedas de plata`;
-
-            // Actualizar panel detallado
-            document.getElementById('silverAmount').textContent = `${playerMoney.silver} Plata`;
-            document.getElementById('goldAmount').textContent = `${playerMoney.gold} Oro`;
-            document.getElementById('platinumAmount').textContent = `${playerMoney.platinum} Platino`;
-        }
-
-        function convertCurrency() {
-            // Convertir exceso de plata a oro
-            while (playerMoney.silver >= 10) {
-                playerMoney.silver -= 10;
-                playerMoney.gold += 1;
-            }
-
-            // Convertir exceso de oro a platino
-            while (playerMoney.gold >= 10) {
-                playerMoney.gold -= 10;
-                playerMoney.platinum += 1;
-            }
-        }
-
-        function showHarvestNotification() {
-            const notification = document.getElementById('harvestNotification');
-            notification.classList.add('active');
-            setTimeout(() => {
-                notification.classList.remove('active');
-            }, 1500);
-        }
-
-        function showInsufficientFunds(message) {
-            const insufficientFunds = document.getElementById('insufficientFunds');
-            const messageElement = document.getElementById('insufficientMessage');
-            messageElement.textContent = message;
-            insufficientFunds.classList.remove('hidden');
-        }
-
-        function hideInsufficientFunds() {
-            document.getElementById('insufficientFunds').classList.add('hidden');
-        }
-
-        function updateOptionButtons() {
-            // Botón de pagar tributo (-2 plata)
-            const payTributeBtn = document.getElementById('payTributeBtn');
-            if (payTributeBtn) {
-                const totalSilver = playerMoney.silver + (playerMoney.gold * 10) + (playerMoney.platinum * 100);
-                if (totalSilver < 2) {
-                    payTributeBtn.classList.add('disabled');
-                    payTributeBtn.onclick = () => showInsufficientFunds('Necesitas 2 monedas de plata para pagar el tributo. ¡Cosecha más monedas!');
-                } else {
-                    payTributeBtn.classList.remove('disabled');
-                    payTributeBtn.onclick = () => chooseOption('pay-tribute');
-                }
-            }
-
-            // Botón de dar insulgencias (-10 oro)
-            const giveIndulgencesBtn = document.getElementById('giveIndulgencesBtn');
-            if (giveIndulgencesBtn) {
-                const totalGold = playerMoney.gold + (playerMoney.platinum * 10);
-                if (totalGold < 10) {
-                    giveIndulgencesBtn.classList.add('disabled');
-                    giveIndulgencesBtn.onclick = () => showInsufficientFunds('Necesitas 10 monedas de oro para dar insulgencias. ¡Cosecha más monedas!');
-                } else {
-                    giveIndulgencesBtn.classList.remove('disabled');
-                    giveIndulgencesBtn.onclick = () => chooseOption('give-indulgences');
-                }
-            }
-
-            // Botón de escapar del reino (-15 platino)
-            const escapeKingdomBtn = document.getElementById('escapeKingdomBtn');
-            if (escapeKingdomBtn) {
-                if (playerMoney.platinum < 15) {
-                    escapeKingdomBtn.classList.add('disabled');
-                    escapeKingdomBtn.onclick = () => showInsufficientFunds('Necesitas 15 monedas de platino para escapar. ¡Cosecha más monedas!');
-                } else {
-                    escapeKingdomBtn.classList.remove('disabled');
-                    escapeKingdomBtn.onclick = () => chooseOption('escape-kingdom');
-                }
-            }
-        }
-
-        // Modificar función chooseOption para manejar pagos
+        // Funciones para opciones del juego
         function chooseOption(option) {
             hideAllDialogs();
 
             switch (option) {
                 case 'pay-tribute':
-                    // Pagar tributo -> ir a 2-2
-                    const totalSilver = playerMoney.silver + (playerMoney.gold * 10) + (playerMoney.platinum * 100);
-                    if (totalSilver >= 2) {
-                        // Restar 2 monedas de plata
-                        let remaining = 2;
-                        while (remaining > 0) {
-                            if (playerMoney.silver >= remaining) {
-                                playerMoney.silver -= remaining;
-                                remaining = 0;
-                            } else {
-                                remaining -= playerMoney.silver;
-                                playerMoney.silver = 0;
-
-                                if (playerMoney.gold > 0) {
-                                    playerMoney.gold -= 1;
-                                    playerMoney.silver += 10;
-                                } else if (playerMoney.platinum > 0) {
-                                    playerMoney.platinum -= 1;
-                                    playerMoney.gold += 10;
-                                }
-                            }
-                        }
-                        updateMoneyDisplay();
-                        updateOptionButtons();
-                        currentDialogSlide = 'slide-2-1';
-                        goToSlide('slide-7');
-                    }
+                    currentDialogSlide = 'slide-2-1';
+                    goToSlide('slide-7');
                     break;
 
                 case 'escape-tribute':
-                    // Escapar -> cabeza cortada
                     currentDialogSlide = 'slide-2-1';
                     goToSlide('result-beheaded', false);
                     break;
 
                 case 'give-indulgences':
-                    // Dar insulgencias -> ir a 2-3
-                    const totalGold = playerMoney.gold + (playerMoney.platinum * 10);
-                    if (totalGold >= 10) {
-                        // Restar 10 monedas de oro
-                        let remaining = 10;
-                        while (remaining > 0) {
-                            if (playerMoney.gold >= remaining) {
-                                playerMoney.gold -= remaining;
-                                remaining = 0;
-                            } else {
-                                remaining -= playerMoney.gold;
-                                playerMoney.gold = 0;
-
-                                if (playerMoney.platinum > 0) {
-                                    playerMoney.platinum -= 1;
-                                    playerMoney.gold += 10;
-                                }
-                            }
-                        }
-                        updateMoneyDisplay();
-                        updateOptionButtons();
-                        currentDialogSlide = 'slide-3';
-                        goToSlide('slide-2-3');
-                    }
+                    currentDialogSlide = 'slide-3';
+                    goToSlide('slide-2-3');
                     break;
 
                 case 'accuse-heresy':
-                    // Acusar de herejía -> empalado
                     currentDialogSlide = 'slide-3';
                     goToSlide('result-impaled', false);
                     break;
 
                 case 'kill-king':
-                    // Asesinar al rey -> ir a 2-4
                     currentDialogSlide = 'slide-5';
                     goToSlide('slide-2-4');
                     break;
 
                 case 'flee-king':
-                    // Huir del rey -> desterrado
                     currentDialogSlide = 'slide-5';
                     goToSlide('result-exiled', false);
                     break;
 
                 case 'fight-kingdom':
-                    // Luchar -> victoria completa
                     goToSlide('result-victory', false);
                     break;
 
                 case 'escape-kingdom':
-                    // Escapar del reino -> resultado de escape
-                    if (playerMoney.platinum >= 15) {
-                        playerMoney.platinum -= 15;
-                        updateMoneyDisplay();
-                        updateOptionButtons();
-                        goToSlide('result-escaped', false);
-                    }
+                    goToSlide('result-escaped', false);
                     break;
             }
         }
 
-        // PANTALLA COMPLETA
+        // FUNCIONES DE VIDEO
+        function playCurrentSlideVideo() {
+            const videoUrl = slideVideos[currentSlideId];
+
+            if (!videoUrl) {
+                console.log('Esta slide no tiene video asignado');
+                return;
+            }
+
+            const videoFullscreen = document.getElementById('videoFullscreen');
+            const fullscreenVideo = document.getElementById('fullscreenVideo');
+            const videoLoading = document.getElementById('videoLoading');
+
+            // 1. Pre-cargar el video
+            fullscreenVideo.classList.remove('loaded');
+
+            // 2. Configurar eventos del video
+            let hasStartedShowing = false;
+
+            fullscreenVideo.ontimeupdate = function () {
+                // Cuando el video lleve 1 segundo de carga
+                if (!hasStartedShowing && fullscreenVideo.currentTime >= 1.0) {
+                    hasStartedShowing = true;
+
+                    // Mostrar el video
+                    videoFullscreen.classList.add('active');
+                    videoLoading.classList.add('hidden');
+                    fullscreenVideo.classList.add('loaded');
+                }
+            };
+
+            fullscreenVideo.onerror = function () {
+                console.error("Error al cargar el video:", videoUrl);
+                videoLoading.classList.add('hidden');
+                closeVideo();
+            };
+
+            fullscreenVideo.onended = closeVideo;
+
+            // 3. Empezar a cargar el video
+            fullscreenVideo.pause();
+            fullscreenVideo.currentTime = 0;
+            fullscreenVideo.src = videoUrl;
+            fullscreenVideo.preload = "auto";
+
+            // 4. Esperar a que tenga suficiente buffer
+            fullscreenVideo.addEventListener('canplay', function () {
+                // Comenzar a reproducir
+                fullscreenVideo.muted = true;
+                fullscreenVideo.play().then(() => {
+                    console.log("Video cargándose...");
+                }).catch(e => {
+                    // Si falla, mostrar igual
+                    videoFullscreen.classList.add('active');
+                    videoLoading.classList.add('hidden');
+                    fullscreenVideo.classList.add('loaded');
+                    fullscreenVideo.muted = false;
+                    fullscreenVideo.play();
+                });
+            });
+
+            // 5. Backup: Si después de 3 segundos no ha llegado al segundo 1, mostrar igual
+            setTimeout(() => {
+                if (!hasStartedShowing) {
+                    hasStartedShowing = true;
+                    videoFullscreen.classList.add('active');
+                    videoLoading.classList.add('hidden');
+                    fullscreenVideo.classList.add('loaded');
+                    fullscreenVideo.muted = false;
+                }
+            }, 500);
+        }
+
+        function closeVideo() {
+            const videoFullscreen = document.getElementById('videoFullscreen');
+            const fullscreenVideo = document.getElementById('fullscreenVideo');
+
+            // Pausar el video
+            fullscreenVideo.pause();
+
+            // Ocultar el video
+            videoFullscreen.classList.remove('active');
+
+            // Limpiar la fuente
+            fullscreenVideo.src = '';
+            fullscreenVideo.onended = null;
+        }
+
+        function toggleVideoPlayPause() {
+            const fullscreenVideo = document.getElementById('fullscreenVideo');
+            if (fullscreenVideo.paused) {
+                fullscreenVideo.play();
+            } else {
+                fullscreenVideo.pause();
+            }
+        }
+
+        function showResultMessage(videoElement) {
+            console.log("Video terminado");
+        }
+
+        // Precargar videos
+        function preloadAllVideos() {
+            const videosToPreload = [
+                'videos/empalamiento.mp4',
+                'videos/destierro.mp4',
+                'videos/vid1.mp4',
+                'videos/vid2.mp4',
+                'videos/vid3.mp4',
+                'videos/vid4.mp4',
+                'videos/vid5.mp4',
+                'videos/vid6.mp4',
+                'videos/vid7.mp4',
+                'videos/vid8.mp4',
+                'videos/vid9.mp4',
+                'videos/vid10.mp4',
+                'videos/vid11.mp4',
+                'videos/vid12.mp4',
+                'videos/vid13.mp4',
+                'videos/vid14.mp4',
+                'videos/vid15.mp4'
+            ];
+
+            videosToPreload.forEach((videoUrl) => {
+                const video = document.createElement('video');
+                video.preload = 'auto';
+                video.style.display = 'none';
+
+                const source = document.createElement('source');
+                source.src = videoUrl;
+                source.type = 'video/mp4';
+
+                video.appendChild(source);
+                document.body.appendChild(video);
+            });
+        }
+
+        // FUNCIONES DE PANTALLA COMPLETA
         function requestFullscreen() {
             const elem = document.documentElement;
             if (elem.requestFullscreen) {
@@ -1876,500 +1322,6 @@
                 exitFullscreen();
             }
         }
-
-        function setupFullscreenListeners() {
-            document.addEventListener('fullscreenchange', handleFullscreen);
-            document.addEventListener('mozfullscreenchange', handleFullscreen);
-            document.addEventListener('webkitfullscreenchange', handleFullscreen);
-            document.addEventListener('msfullscreenchange', handleFullscreen);
-        }
-
-        function handleFullscreen() {
-            const isFullscreen = !!(document.fullscreenElement ||
-                document.mozFullScreenElement ||
-                document.webkitFullscreenElement ||
-                document.msFullscreenElement);
-
-            if (!isFullscreen) {
-                document.querySelector('.fullscreen-btn').classList.remove('fade-out');
-            } else {
-                document.querySelector('.fullscreen-btn').classList.add('fade-out');
-            }
-        }
-
-        // Mapeo de videos por slide (pon aquí tus URLs de video)
-        const slideVideos = {
-            'slide-1': 'videos/vid1.mp4',        // Video para slide-1 (img1.png)
-            'slide-8': 'videos/vid2.mp4',        // Video para slide-8 (img8.png)
-            'slide-7': 'videos/vid3.mp4',        // Video para slide-7 (img7.png)
-            'slide-2': 'videos/vid4.mp4',        // Video para slide-2 (img2.png)
-            'slide-2-1': 'videos/vid5.mp4',      // Video para slide-2-1 (img2-1.png)
-            'slide-2-2': 'videos/vid6.mp4',      // Video para slide-2-2 (img2-2.png)
-            'slide-3': 'videos/vid7.mp4',        // Video para slide-3 (img3.png)
-            'slide-2-3': 'videos/vid8.mp4',      // Video para slide-2-3 (img2-3.png)
-            'slide-4': 'videos/vid9.mp4',        // Video para slide-4 (img4.png)
-            'slide-5': 'videos/vid10.mp4',       // Video para slide-5 (img5.png)
-            'slide-2-4': 'videos/vid11.mp4',     // Video para slide-2-4 (img2-4.png)
-            'slide-11': 'videos/vid12.mp4',      // Video para slide-11 (img11.png)
-            'slide-6': 'videos/vid13.mp4',       // Video para slide-6 (img6.png)
-            'slide-9': 'videos/vid14.mp4',       // Video para slide-9 (img9.png)
-            'slide-10': 'videos/vid15.mp4'       // Video para slide-10 (img10.png)
-            // Las slides de resultado no tienen video
-        };
-
-        // Modifica la función setupNavigation para manejar mejor los eventos:
-        function setupNavigation() {
-            // Navegación con teclado
-            document.addEventListener('keydown', (e) => {
-                if (isTransitioning) return;
-
-                // Verificar si hay video activo
-                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
-
-                // Si hay video activo
-                if (isVideoActive) {
-                    const video = document.getElementById('fullscreenVideo');
-
-                    switch (e.key) {
-                        case ' ': // Espacio - pausa/reanuda
-                            e.preventDefault();
-                            toggleVideoPlayPause();
-                            return;
-                        case 'Escape': // Escape - cierra video
-                        case 'q': // Q - cierra video
-                        case 'Q':
-                            e.preventDefault();
-                            closeVideo();
-                            return;
-                        case 'ArrowRight': // Flechas - saltar en el video
-                        case 'ArrowLeft':
-                            e.preventDefault();
-                            // Permitir navegación dentro del video
-                            return;
-                    }
-                }
-
-                // Si NO hay video activo, manejar teclas normales
-                // Verificar si hay algún diálogo visible
-                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
-                    .some(dialog => !dialog.classList.contains('hidden'));
-
-                // Verificar si estamos en una pantalla de resultado
-                const isResultScreen = currentSlideId.includes('result-');
-
-                // Manejo de tecla Q para activar video (solo si no hay diálogo y no es resultado)
-                if ((e.key === 'q' || e.key === 'Q') && !hasVisibleDialog && !isResultScreen) {
-                    e.preventDefault();
-                    playCurrentSlideVideo();
-                    return;
-                }
-
-                // Manejo de teclas para economía
-                if (e.key === 'c' || e.key === 'C') {
-                    e.preventDefault();
-                    toggleEconomyMenu();
-                    return;
-                }
-
-                // Manejo de teclas para pantalla completa
-                if (e.key === 'f' || e.key === 'F') {
-                    e.preventDefault();
-                    toggleFullscreen();
-                    return;
-                }
-
-                // Solo permitir navegación si no hay diálogo visible y no es pantalla de resultado
-                if (hasVisibleDialog || isResultScreen) {
-                    return;
-                }
-
-                // Navegación entre slides
-                switch (e.key) {
-                    case 'ArrowRight':
-                    case 'PageDown':
-                        e.preventDefault();
-                        navigateNext();
-                        break;
-
-                    case 'ArrowLeft':
-                    case 'PageUp':
-                        e.preventDefault();
-                        navigatePrev();
-                        break;
-
-                    case ' ':
-                    case 'Enter':
-                        e.preventDefault();
-                        if (!isVideoActive) { // Solo navegar si no hay video activo
-                            navigateNext();
-                        }
-                        break;
-
-                    case 'Escape':
-                        // No hacer nada con Escape
-                        break;
-                }
-            });
-
-            // Navegación con clic
-            document.addEventListener('click', (e) => {
-                if (isTransitioning) return;
-
-                // Verificar si hay video activo
-                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
-
-                // Si hay video activo
-                if (isVideoActive) {
-                    // Si se hace clic en el video, pausar/reanudar
-                    if (e.target.tagName === 'VIDEO' || e.target.closest('.video-fullscreen')) {
-                        toggleVideoPlayPause();
-                    }
-                    return;
-                }
-
-                // Verificar si se hizo clic en un botón de mostrar mensaje
-                if (e.target.classList.contains('show-message-btn')) {
-                    return;
-                }
-
-                // Verificar si se hizo clic en un botón de diálogo
-                if (e.target.classList.contains('dialog-btn')) {
-                    return;
-                }
-
-                // Verificar si hay algún diálogo visible
-                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
-                    .some(dialog => !dialog.classList.contains('hidden'));
-
-                // Verificar si estamos en una pantalla de resultado
-                const isResultScreen = currentSlideId.includes('result-');
-
-                // Verificar si se hizo clic en el panel de economía
-                const isEconomyClick = e.target.closest('.economy-panel');
-
-                if (hasVisibleDialog || isResultScreen || isEconomyClick) {
-                    return;
-                }
-
-                const clickX = e.clientX;
-                const windowWidth = window.innerWidth;
-
-                if (clickX > windowWidth / 2) {
-                    navigateNext();
-                } else {
-                    navigatePrev();
-                }
-            });
-
-            // Navegación con touch (se mantiene igual)
-            document.addEventListener('touchstart', (e) => {
-                if (isTransitioning) return;
-
-                // Verificar si hay video activo
-                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
-                if (isVideoActive) return; // No navegar durante video
-
-                // Verificar si hay algún diálogo visible
-                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
-                    .some(dialog => !dialog.classList.contains('hidden'));
-
-                if (hasVisibleDialog || currentSlideId.includes('result-')) {
-                    e.preventDefault();
-                    return;
-                }
-
-                const touchX = e.touches[0].clientX;
-                const windowWidth = window.innerWidth;
-
-                if (touchX > windowWidth / 2) {
-                    navigateNext();
-                } else {
-                    navigatePrev();
-                }
-
-                e.preventDefault();
-            });
-
-            // Navegación con scroll (se mantiene igual)
-            document.addEventListener('wheel', (e) => {
-                if (isTransitioning) return;
-
-                // Verificar si hay video activo
-                const isVideoActive = document.getElementById('videoFullscreen').classList.contains('active');
-                if (isVideoActive) return; // No navegar durante video
-
-                // Verificar si hay algún diálogo visible
-                const hasVisibleDialog = Array.from(document.querySelectorAll('.dialog-overlay, .intro-overlay'))
-                    .some(dialog => !dialog.classList.contains('hidden'));
-
-                if (hasVisibleDialog || currentSlideId.includes('result-')) {
-                    e.preventDefault();
-                    return;
-                }
-
-                e.preventDefault();
-
-                if (e.deltaY > 0) {
-                    navigateNext();
-                } else {
-                    navigatePrev();
-                }
-            }, { passive: false });
-        }
-
-        // FUNCIONES DE VIDEO MEJORADAS
-        function playCurrentSlideVideo() {
-            const videoUrl = slideVideos[currentSlideId];
-
-            if (!videoUrl) {
-                console.log('Esta slide no tiene video asignado');
-                return;
-            }
-
-            const videoFullscreen = document.getElementById('videoFullscreen');
-            const fullscreenVideo = document.getElementById('fullscreenVideo');
-
-            // Cambiar la fuente del video
-            fullscreenVideo.src = videoUrl;
-
-            // Mostrar el video a pantalla completa
-            videoFullscreen.classList.add('active');
-
-            // Configurar evento para cuando termine el video
-            fullscreenVideo.onended = function () {
-                closeVideo();
-            };
-
-            // Reproducir automáticamente
-            const playPromise = fullscreenVideo.play();
-
-            if (playPromise !== undefined) {
-                playPromise.catch(e => {
-                    console.log("Autoplay bloqueado, se requiere interacción del usuario:", e);
-                    // Si el autoplay falla, mostrar mensaje táctil
-                    fullscreenVideo.controls = true;
-                });
-            }
-        }
-
-        function closeVideo() {
-            const videoFullscreen = document.getElementById('videoFullscreen');
-            const fullscreenVideo = document.getElementById('fullscreenVideo');
-
-            // Pausar el video
-            fullscreenVideo.pause();
-
-            // Ocultar el video
-            videoFullscreen.classList.remove('active');
-
-            // Limpiar la fuente
-            fullscreenVideo.src = '';
-            fullscreenVideo.onended = null;
-            fullscreenVideo.controls = false;
-        }
-
-        function toggleVideoPlayPause() {
-            const fullscreenVideo = document.getElementById('fullscreenVideo');
-            if (fullscreenVideo.paused) {
-                fullscreenVideo.play();
-            } else {
-                fullscreenVideo.pause();
-            }
-        }
-
-        // Modifica también la función goToSlide:
-        function goToSlide(slideId, addToHistory = true) {
-            if (isTransitioning || !slides[slideId]) return;
-
-            isTransitioning = true;
-            hideAllDialogs();
-            closeVideo(); // Cerrar video si está abierto
-
-            const currentIndex = Object.keys(slides).indexOf(currentSlideId);
-            const targetIndex = Object.keys(slides).indexOf(slideId);
-            const direction = targetIndex > currentIndex ? 'next' : 'prev';
-
-            document.querySelector('.transition-overlay').classList.add('active');
-            slides[currentSlideId].classList.add(direction === 'next' ? 'prev' : 'next');
-
-            setTimeout(() => {
-                slides[currentSlideId].classList.remove('active');
-                currentSlideId = slideId;
-                slides[currentSlideId].classList.add('active');
-
-                Object.values(slides).forEach(slide => {
-                    slide.classList.remove('prev', 'next');
-                });
-
-                if (addToHistory && !slideId.includes('result-')) {
-                    slideHistory.push(slideId);
-                }
-
-                updateCounter();
-                updateOptionButtons();
-
-                setTimeout(() => {
-                    document.querySelector('.transition-overlay').classList.remove('active');
-                    isTransitioning = false;
-                }, 300);
-            }, 400);
-        }
-
-        // FUNCIÓN DE VIDEO MODIFICADA
-        function playCurrentSlideVideo() {
-            const videoUrl = slideVideos[currentSlideId];
-
-            if (!videoUrl) {
-                console.log('Esta slide no tiene video asignado');
-                return;
-            }
-
-            const videoFullscreen = document.getElementById('videoFullscreen');
-            const fullscreenVideo = document.getElementById('fullscreenVideo');
-            const videoLoading = document.getElementById('videoLoading');
-
-            // 1. Pre-cargar el video pero NO mostrarlo aún
-            fullscreenVideo.classList.remove('loaded');
-
-            // 2. Configurar eventos del video
-            let hasStartedShowing = false;
-
-            fullscreenVideo.ontimeupdate = function () {
-                // Cuando el video lleve 1 segundo de carga
-                if (!hasStartedShowing && fullscreenVideo.currentTime >= 1.0) {
-                    hasStartedShowing = true;
-
-                    // Mostrar el video instantáneamente
-                    videoFullscreen.classList.add('active');
-                    videoLoading.classList.add('hidden');
-                    fullscreenVideo.classList.add('loaded');
-
-                    console.log("Video apareció en el segundo:", fullscreenVideo.currentTime);
-                }
-            };
-
-            fullscreenVideo.onerror = function () {
-                console.error("Error al cargar el video:", videoUrl);
-                videoLoading.classList.add('hidden');
-                closeVideo();
-            };
-
-            fullscreenVideo.onended = closeVideo;
-
-            // 3. Empezar a cargar el video pero sin mostrar
-            fullscreenVideo.pause();
-            fullscreenVideo.currentTime = 0;
-            fullscreenVideo.src = videoUrl;
-            fullscreenVideo.preload = "auto";
-
-            // 4. Esperar a que tenga suficiente buffer
-            fullscreenVideo.addEventListener('canplay', function () {
-                // Comenzar a reproducir pero MUTADO para que cargue
-                fullscreenVideo.muted = true;
-                fullscreenVideo.play().then(() => {
-                    console.log("Video cargándose en segundo plano...");
-                }).catch(e => {
-                    console.log("Error al precargar:", e);
-                    // Si falla, mostrar igual
-                    videoFullscreen.classList.add('active');
-                    videoLoading.classList.add('hidden');
-                    fullscreenVideo.classList.add('loaded');
-                    fullscreenVideo.muted = false;
-                    fullscreenVideo.play();
-                });
-            });
-
-            // 5. Backup: Si después de 3 segundos no ha llegado al segundo 1, mostrar igual
-            setTimeout(() => {
-                if (!hasStartedShowing) {
-                    hasStartedShowing = true;
-                    videoFullscreen.classList.add('active');
-                    videoLoading.classList.add('hidden');
-                    fullscreenVideo.classList.add('loaded');
-                    fullscreenVideo.muted = false;
-                    console.log("Forzado a mostrar después de 3 segundos");
-                }
-            }, 500);
-        }
-
-        function showResultMessage(videoElement) {
-            // Esta función se ejecuta cuando termina el video
-            // Puedes hacer que el video se repita en bucle (loop) 
-            // o mostrar algún mensaje adicional
-            console.log("Video terminado, mostrando resultado final");
-
-            // Si quieres que se repita automáticamente:
-            // videoElement.currentTime = 0;
-            // videoElement.play();
-        }
-
-        // Al inicio del script, agrega esta función:
-        function preloadAllVideos() {
-            // Lista de videos a precargar
-            const videosToPreload = [
-                'videos/empalamiento.mp4',
-                'videos/destierro.mp4',
-                'videos/vid1.mp4',
-                'videos/vid2.mp4',
-                'videos/vid3.mp4',
-                'videos/vid4.mp4',
-                'videos/vid5.mp4',
-                'videos/vid6.mp4',
-                'videos/vid7.mp4',
-                'videos/vid8.mp4',
-                'videos/vid9.mp4',
-                'videos/vid10.mp4',
-                'videos/vid11.mp4',
-                'videos/vid12.mp4',
-                'videos/vid13.mp4',
-                'videos/vid14.mp4',
-                'videos/vid15.mp4'
-            ];
-
-            console.log("Iniciando precarga de videos...");
-
-            videosToPreload.forEach((videoUrl, index) => {
-                const video = document.createElement('video');
-                video.preload = 'auto';
-                video.style.display = 'none';
-
-                const source = document.createElement('source');
-                source.src = videoUrl;
-                source.type = 'video/mp4';
-
-                video.appendChild(source);
-                document.body.appendChild(video);
-
-                // Opcional: Mostrar progreso de carga
-                video.addEventListener('loadeddata', () => {
-                    console.log(`Video precargado: ${videoUrl}`);
-                });
-
-                video.addEventListener('error', (e) => {
-                    console.warn(`Error al precargar video: ${videoUrl}`, e);
-                });
-            });
-
-            console.log("Todos los videos están siendo precargados en segundo plano");
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            // Inicializar todas las slides
-            initSlides();
-
-            // Inicializar sistema de economía
-            initEconomy();
-
-            // PRECARGAR TODOS LOS VIDEOS
-            preloadAllVideos();
-
-            // Intentar pantalla completa automáticamente
-            setTimeout(() => {
-                requestFullscreen();
-            }, 100);
-
-            // ... resto de tu código ...
-        });
     </script>
 </body>
 
